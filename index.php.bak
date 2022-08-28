@@ -1,9 +1,6 @@
 <?php
 {
-$Name=$_GET['txtName'];
-$Email=$_GET['txtEmail'];
-
-echo "Name is: $Name and Email is: $Email";
+echo "I am PHP";
 }
 ?>
 

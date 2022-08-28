@@ -12,7 +12,7 @@ echo "I am PHP";
 <body>
 <fieldset>
 <legend>Contact Form</legend>
-<form align = "center" name="frmContact" method="get" action="index.html">
+<form align = "center" name="frmContact" method="get" action="index.php">
 <p>
 <label for="Name">Employee Name </label>
 <input type="text" name="txtName" id="txtName">
