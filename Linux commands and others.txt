@@ -1,0 +1,40 @@
+Exam-info
+---------
+https://d1.awsstatic.com/training-and-certification/docs-sa-assoc/AWS-Certified-Solutions-Architect-Associate_Exam-Guide_C03.pdf
+
+Sample questions
+----------------
+https://d1.awsstatic.com/training-and-certification/docs-sa-assoc/AWS-Certified-Solutions-Architect-Associate_Sample-Questions.pdf
+
+Practice test
+-------------
+https://explore.skillbuilder.aws/learn/course/external/view/elearning/12482/aws-certified-solutions-architect-associate-practice-question-set-saa-c02-english?saa=sec&sec=prep
+
+
+Basic Linux commands for auto running of scripts added as part of user-data of EC2 instance
+-------------------------------------------------------------------------------------------
+#!/bin/bash
+#install httpd (Linux 2 version)
+yum update -y
+amazon-linux-extras install -y php7.2
+yum install -y httpd
+systemctl start httpd
+systemctl enable httpd
+usermod -a -G apache ec2-user
+chown -R ec2-user:apache /var/www
+chmod 2775 /var/www
+find /var/www -type d -exec chmod 2775 {} \;
+find /var/www -type f -exec chmod 0664 {} \;
+cd /var/www/html
+wget https://github.com/siva15581/PHP---EC2---RDS/blob/master/DBConn.php
+
+sudo -s --> From ec2-user to root user
+su -l ec2-user --> From root user to ec2-user
+
+touch xxxx.php
+nano xxxx.php --- > to edit the current php file in nano editor
+
+ls -l ---> to list the files in the current directory
+cd /var/www/html/ ----> going to the base directory of apache server to store the index.html
+
+mysql -h <RDS end point> -P <db_port_number> -u<db_username> -p

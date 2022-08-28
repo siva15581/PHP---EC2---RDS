@@ -34,7 +34,6 @@ define('DB_DATABASE', 'employee');
               "select * from information_schema.tables where table_name ='Employee' and table_schema ='employee'");
 
         if(mysqli_num_rows($checktable) > 0){
-//              echo "I am present";
         $employee_name = htmlentities($_POST['NAME']);
         $employee_address = htmlentities($_POST['ADDRESS']);
           if ((strlen($employee_name)>1) && (strlen($employee_address)>1)) {
@@ -43,7 +42,7 @@ define('DB_DATABASE', 'employee');
                 if(!mysqli_query($connection, $query)){
                         echo("Error adding employee data");
                 }
-                echo "Data Inserted";
+//                echo "Data Inserted";
           }
         }
         else
@@ -53,7 +52,27 @@ define('DB_DATABASE', 'employee');
 
 ?>
 
+<!-- Display table data. -->
+<br>
+table border="1" cellpadding="2" cellspacing="2">
+  <tr>
+    <td>NAME</td>
+    <td>ADDRESS</td>
+  </tr>
+
+<?php
+
+$result = mysqli_query($connection, "SELECT * FROM Employee");
+
+while($query_data = mysqli_fetch_row($result)) {
+  echo "<tr>";
+  echo "<td>",$query_data[0], "</td>",
+       "<td>",$query_data[1], "</td>";
+  echo "</tr>";
+}
 ?>
+
+</table>
 
 </body>
 </form>
