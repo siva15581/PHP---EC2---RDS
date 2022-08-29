@@ -21,17 +21,17 @@
 
 <?php
 
-define('DB_SERVER', 'employee.cqjrmguzefqi.us-east-1.rds.amazonaws.com');
+define('DB_SERVER', 'employeedet.cqjrmguzefqi.us-east-1.rds.amazonaws.com');
 define('DB_USERNAME', 'admin');
 define('DB_PASSWORD', 'admin123');
-define('DB_DATABASE', 'Employee');
+define('DB_DATABASE', 'employee');
 
         $connection = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD);
         if (mysqli_connect_errno()) echo "Failed to connect to MySQL: " . mysqli_connect_error();
         $database = mysqli_select_db($connection, DB_DATABASE);
 
         $checktable = mysqli_query($connection,
-              "select * from information_schema.tables where table_name ='Employee' and table_schema ='Employee'");
+              "select * from information_schema.tables where table_name ='Employee' and table_schema ='employee'");
 
         if(mysqli_num_rows($checktable) > 0){
         $employee_name = htmlentities($_POST['NAME']);
@@ -53,11 +53,9 @@ define('DB_DATABASE', 'Employee');
 ?>
 
 <!-- Display table data. -->
-
 <br>
-<table border="1" cellpadding="2" cellspacing="2">
+table border="1" cellpadding="2" cellspacing="2">
   <tr>
-    <td>ID</td>
     <td>NAME</td>
     <td>ADDRESS</td>
   </tr>
@@ -69,8 +67,7 @@ $result = mysqli_query($connection, "SELECT * FROM Employee");
 while($query_data = mysqli_fetch_row($result)) {
   echo "<tr>";
   echo "<td>",$query_data[0], "</td>",
-       "<td>",$query_data[1], "</td>",
-       "<td>",$query_data[2], "</td>";
+       "<td>",$query_data[1], "</td>";
   echo "</tr>";
 }
 ?>
